@@ -6,6 +6,10 @@
     #include "rev1.h"
 #elif KEYBOARD_lets_split_rev2
     #include "rev2.h"
+#elif KEYBOARD_lets_split_kovirobil
+    #include "kovirobil.h"
+#elif KEYBOARD_lets_split_kovirobir
+    #include "kovirobir.h"
 #elif KEYBOARD_lets_split_sockets
     #include "sockets.h"
 #endif
