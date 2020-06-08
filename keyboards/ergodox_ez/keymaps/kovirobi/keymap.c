@@ -3,27 +3,24 @@
 #include "action_layer.h"
 #include "keymap_steno.h"
 
-enum keymaps = {
-  BASE,
-  MIRROR,
-  SYMBOLS,
-  NUMPAD,
-  TXBOLT,
-  QWERTY,
-  MAX_KEYMAPS
-};
+#define BASE    0
+#define MIRROR  1
+#define SYMBOLS 2
+#define NUMPAD  3
+#define TXBOLT  4
+#define QWERTY  5
 
-const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
+const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 /* Keymap 0: Basic layer
  *
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   =    |   1  |   2  |   3  |   4  |   5  |QWERTY|           |TXBOLT|   6  |   7  |   8  |   9  |   0  |   -    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   \    | Q/Sym| W/Sym| D/Sym| F/Sym|   K  |  L1  |           |  [   |   J  | U/Sym| R/Sym| L/Sym| ;/Sym|   ]    |
+ * |   \    | Q/Sym| W/Sym| E/Sym| R/Sym|   T  |  L1  |           |  [   |   Y  | U/Sym| I/Sym| O/Sym| P/Sym|   ]    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |  Esc   |A/Shft|S/Shft|E/Ctrl|T/Ctrl|   G  |------|           |------|   Y  |N/Ctrl|I/Ctrl|O/Shft|H/Shft|   '    |
+ * |  Esc   |A/Shft|S/Shft|D/Ctrl|F/Ctrl|   G  |------|           |------|   H  |J/Ctrl|K/Ctrl|L/Shft|;/Shft|   '    |
  * |--------+------+------+------+------+------| Del  |           | Ins  |------+------+------+------+------+--------|
- * |LShift/(| Z/Cmd| X/Cmd| C/Alt| V/Alt|B/Mror|      |           |      |P/Mror| M/Alt| ,/Alt| ./Cmd| //Cmd|RShift/)|
+ * |LShift/(| Z/Cmd| X/Cmd| C/Alt| V/Alt|B/Mror|      |           |      |N/Mror| M/Alt| ,/Alt| ./Cmd| //Cmd|RShift/)|
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | LGui |  Grv |nonUS\|nonUS#| Right|                                       | Left | Down |  Up  | Right| RGui |
  *   `----------------------------------'                                       `----------------------------------'
@@ -36,11 +33,11 @@ const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `----------------------'
  */
 #define SYM_T(key) LT(SYMBOLS,key)
-[BASE] = KEYMAP(  // layer 0 : default
+[BASE] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_EQL,            KC_1,        KC_2,            KC_3,              KC_4,        KC_5,            TG(QWERTY),
-        KC_BSLS,           SYM_T(KC_Q), SYM_T(KC_W),     SYM_T(KC_D),       SYM_T(KC_F), KC_K,            TG(NUMPAD),
-        KC_ESC,            SFT_T(KC_A), SFT_T(KC_S),     CTL_T(KC_E),       CTL_T(KC_T), KC_G,
+        KC_BSLS,           SYM_T(KC_Q), SYM_T(KC_W),     SYM_T(KC_E),       SYM_T(KC_R), KC_T,            TG(NUMPAD),
+        KC_ESC,            SFT_T(KC_A), SFT_T(KC_S),     CTL_T(KC_D),       CTL_T(KC_F), KC_G,
         KC_LSFT,           GUI_T(KC_Z), GUI_T(KC_X),     ALT_T(KC_C),       ALT_T(KC_V), LT(MIRROR,KC_B), KC_DELT,
         KC_LGUI,           KC_GRV,      KC_NONUS_BSLASH, KC_NONUS_HASH,     KC_RGHT,
                                                                                           ALT_T(KC_APP),    KC_LGUI,
@@ -48,9 +45,9 @@ const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
                                                                       LT(MIRROR, KC_SPC), KC_BSPC,          KC_END,
         // right hand
         TG(TXBOLT), KC_0,            KC_6,        KC_7,           KC_8,          KC_9,           KC_MINS,
-        KC_LBRC,    KC_J,            SYM_T(KC_U), SYM_T(KC_R),    SYM_T(KC_L),   SYM_T(KC_SCLN), KC_RBRC,
-                    KC_Y,            CTL_T(KC_N), CTL_T(KC_I),    SFT_T(KC_O),   SFT_T(KC_H),    KC_QUOT,
-        KC_INS,     LT(MIRROR,KC_P), ALT_T(KC_M), ALT_T(KC_COMM), GUI_T(KC_DOT), GUI_T(KC_SLSH), KC_RSFT,
+        KC_LBRC,    KC_Y,            SYM_T(KC_U), SYM_T(KC_I),    SYM_T(KC_O),   SYM_T(KC_P),    KC_RBRC,
+                    KC_H,            CTL_T(KC_J), CTL_T(KC_K),    SFT_T(KC_L),   SFT_T(KC_SCLN), KC_QUOT,
+        KC_INS,     LT(MIRROR,KC_N), ALT_T(KC_M), ALT_T(KC_COMM), GUI_T(KC_DOT), GUI_T(KC_SLSH), KC_RSFT,
                                      KC_LEFT,     KC_DOWN,       KC_UP,         KC_RIGHT,        KC_RGUI,
         KC_LALT,    CTL_T(KC_ESC),
         KC_PGUP,
@@ -61,11 +58,11 @@ const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |   -    |   9  |   8  |   7  |   6  |   0  |TXBOLT|           | LEFT |   5  |   4  |   3  |   2  |   1  |   =    |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |   ]    | ;/Sym| L/Sym| R/Sym| U/Sym|   J  |  [   |           |  L1  |   K  | F/Sym| D/Sym| W/Sym| Q/Sym|   \    |
+ * |   ]    | P/Sym| O/Sym| I/Sym| U/Sym|   Y  |  [   |           |  L1  |   T  | R/Sym| E/Sym| W/Sym| Q/Sym|   \    |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |   '    |H/Shft|O/Shft|I/Ctrl|N/Ctrl|   Y  |------|           |------|   G  |T/Ctrl|E/Ctrl|S/Shft|A/Shft|  Esc   |
+ * |   '    |;/Shft|L/Shft|K/Ctrl|J/Ctrl|   H  |------|           |------|   G  |F/Ctrl|D/Ctrl|S/Shft|A/Shft|  Esc   |
  * |--------+------+------+------+------+------| Ins  |           | Del  |------+------+------+------+------+--------|
- * | RShift | //Cmd| ./Cmd| ,/Alt| M/Alt|   P  |      |           |      |   B  | V/Alt| C/Alt| X/Cmd| Z/Cmd| LShift |
+ * | RShift | //Cmd| ./Cmd| ,/Alt| M/Alt|   N  |      |           |      |   B  | V/Alt| C(Alt| X/Cmd| Z/Cmd| LShift |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   | ~L1  | Right|  Up  | Down | Left |                                       | Right| Left |AltShf|  Grv |Grv/L1|
  *   `----------------------------------'                                       `----------------------------------'
@@ -78,20 +75,20 @@ const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
  *                               `----------------------'       `--------------------'
  */
 // MIRROR
-[MIRROR] = KEYMAP(
+[MIRROR] = LAYOUT_ergodox(
         // left hand
         KC_MINS, KC_9,     KC_8,   KC_7,         KC_6,           KC_0,          TG(TXBOLT),
-        KC_RBRC, SYM_T(KC_SCLN),  SYM_T(KC_L),   SYM_T(KC_R),    SYM_T(KC_U), KC_J, KC_LBRC,
-        KC_QUOT, SFT_T(KC_H),     SFT_T(KC_O),   CTL_T(KC_I),    CTL_T(KC_N), KC_Y,
-        KC_RSFT, GUI_T(KC_SLSH),  GUI_T(KC_DOT), ALT_T(KC_COMM), ALT_T(KC_M), KC_P, KC_INS,
+        KC_RBRC, SYM_T(KC_P),     SYM_T(KC_O),   SYM_T(KC_I),    SYM_T(KC_U), KC_Y, KC_LBRC,
+        KC_QUOT, SFT_T(KC_SCLN),  SFT_T(KC_L),   CTL_T(KC_K),    CTL_T(KC_J), KC_H,
+        KC_RSFT, GUI_T(KC_SLSH),  GUI_T(KC_DOT), ALT_T(KC_COMM), ALT_T(KC_M), KC_N, KC_INS,
         KC_RGUI, KC_RIGHT, KC_UP, KC_DOWN,       KC_LEFT,
                                                                  CTL_T(KC_ESC), KC_LALT,
                                                                                 KC_PGUP,
                                                                         KC_ENT, KC_TAB,   KC_PGDN,
         // right hand
         KC_LEFT,    KC_5, KC_4,        KC_3,        KC_2,        KC_1,        KC_EQL,
-        TG(NUMPAD), KC_K, SYM_T(KC_F), SYM_T(KC_D), SYM_T(KC_W), SYM_T(KC_Q), KC_BSLS,
-                    KC_G, CTL_T(KC_T), CTL_T(KC_E), SFT_T(KC_S), SFT_T(KC_A), KC_ESC,
+        TG(NUMPAD), KC_T, SYM_T(KC_R), SYM_T(KC_E), SYM_T(KC_W), SYM_T(KC_Q), KC_BSLS,
+                    KC_G, CTL_T(KC_F), CTL_T(KC_D), SFT_T(KC_S), SFT_T(KC_A), KC_ESC,
         KC_DELT,    KC_B, ALT_T(KC_V), ALT_T(KC_C), GUI_T(KC_X), GUI_T(KC_Z), KC_LSFT,
                           KC_RGHT,     KC_LEFT,     LALT(KC_LSFT), KC_GRV,    KC_LGUI,
         KC_LGUI,    ALT_T(KC_APP),
@@ -120,7 +117,7 @@ const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // SYMBOLS
-[SYMBOLS] = KEYMAP(
+[SYMBOLS] = LAYOUT_ergodox(
        // left hand
        M(0),    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
        KC_TRNS, SYM_T(KC_EXLM), SYM_T(KC_AT),   SYM_T(KC_LCBR), SYM_T(KC_RCBR), KC_TRNS, KC_TRNS,
@@ -162,7 +159,7 @@ const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
  *                                 `--------------------'       `--------------------'
  */
 // NUMPAD
-[NUMPAD] = KEYMAP(
+[NUMPAD] = LAYOUT_ergodox(
        // left hand
        KC_F13,  KC_NLCK, KC_PSLS, KC_PAST, KC_PMNS, KC_F1, KC_TRNS,
        KC_F14,  KC_P7,   KC_P8,   KC_P9,   KC_PPLS, KC_F2, KC_TRNS,
@@ -275,7 +272,7 @@ const uint16_t PROGMEM keymaps[MAX_KEYMAPS][MATRIX_ROWS][MATRIX_COLS] = {
  */
 // If it accepts an argument (i.e, is a function), it doesn't need KC_.
 // Otherwise, it needs KC_*
-[QWERTY] = KEYMAP(  // layer 0 : default
+[QWERTY] = LAYOUT_ergodox(  // layer 0 : default
         // left hand
         KC_EQL,  KC_1,    KC_2,    KC_3, KC_4, KC_5, KC_TRNS,
         KC_DELT, KC_Q,    KC_W,    KC_E, KC_R, KC_T, KC_NO,
