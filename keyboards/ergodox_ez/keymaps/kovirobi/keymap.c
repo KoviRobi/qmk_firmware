@@ -38,7 +38,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_EQL,            KC_1,        KC_2,            KC_3,              KC_4,        KC_5,            TG(QWERTY),
         KC_BSLS,           SYM_T(KC_Q), SYM_T(KC_W),     SYM_T(KC_E),       SYM_T(KC_R), KC_T,            TG(NUMPAD),
         KC_ESC,            SFT_T(KC_A), SFT_T(KC_S),     CTL_T(KC_D),       CTL_T(KC_F), KC_G,
-        KC_LSPO,           GUI_T(KC_Z), GUI_T(KC_X),     ALT_T(KC_C),       ALT_T(KC_V), LT(MIRROR,KC_B), KC_DELT,
+        KC_LSFT,           GUI_T(KC_Z), GUI_T(KC_X),     ALT_T(KC_C),       ALT_T(KC_V), LT(MIRROR,KC_B), KC_DELT,
         KC_LGUI,           KC_GRV,      KC_NONUS_BSLASH, KC_NONUS_HASH,     KC_RGHT,
                                                                                           ALT_T(KC_APP),    KC_LGUI,
                                                                                                             KC_HOME,
@@ -47,7 +47,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         TG(TXBOLT), KC_0,            KC_6,        KC_7,           KC_8,          KC_9,           KC_MINS,
         KC_LBRC,    KC_Y,            SYM_T(KC_U), SYM_T(KC_I),    SYM_T(KC_O),   SYM_T(KC_P),    KC_RBRC,
                     KC_H,            CTL_T(KC_J), CTL_T(KC_K),    SFT_T(KC_L),   SFT_T(KC_SCLN), KC_QUOT,
-        KC_INS,     LT(MIRROR,KC_N), ALT_T(KC_M), ALT_T(KC_COMM), GUI_T(KC_DOT), GUI_T(KC_SLSH), KC_RSPC,
+        KC_INS,     LT(MIRROR,KC_N), ALT_T(KC_M), ALT_T(KC_COMM), GUI_T(KC_DOT), GUI_T(KC_SLSH), KC_RSFT,
                                      KC_LEFT,     KC_DOWN,       KC_UP,         KC_RIGHT,        KC_RGUI,
         KC_LALT,    CTL_T(KC_ESC),
         KC_PGUP,
@@ -80,7 +80,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_MINS, KC_9,     KC_8,   KC_7,         KC_6,           KC_0,          TG(TXBOLT),
         KC_RBRC, SYM_T(KC_P),     SYM_T(KC_O),   SYM_T(KC_I),    SYM_T(KC_U), KC_Y, KC_LBRC,
         KC_QUOT, SFT_T(KC_SCLN),  SFT_T(KC_L),   CTL_T(KC_K),    CTL_T(KC_J), KC_H,
-        KC_RSPC, GUI_T(KC_SLSH),  GUI_T(KC_DOT), ALT_T(KC_COMM), ALT_T(KC_M), KC_N, KC_INS,
+        KC_RSFT, GUI_T(KC_SLSH),  GUI_T(KC_DOT), ALT_T(KC_COMM), ALT_T(KC_M), KC_N, KC_INS,
         KC_RGUI, KC_RIGHT, KC_UP, KC_DOWN,       KC_LEFT,
                                                                  CTL_T(KC_ESC), KC_LALT,
                                                                                 KC_PGUP,
@@ -89,7 +89,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
         KC_LEFT,    KC_5, KC_4,        KC_3,        KC_2,        KC_1,        KC_EQL,
         TG(NUMPAD), KC_T, SYM_T(KC_R), SYM_T(KC_E), SYM_T(KC_W), SYM_T(KC_Q), KC_BSLS,
                     KC_G, CTL_T(KC_F), CTL_T(KC_D), SFT_T(KC_S), SFT_T(KC_A), KC_ESC,
-        KC_DELT,    KC_B, ALT_T(KC_V), ALT_T(KC_C), GUI_T(KC_X), GUI_T(KC_Z), KC_LSPO,
+        KC_DELT,    KC_B, ALT_T(KC_V), ALT_T(KC_C), GUI_T(KC_X), GUI_T(KC_Z), KC_LSFT,
                           KC_RGHT,     KC_LEFT,     LALT(KC_LSFT), KC_GRV,    KC_LGUI,
         KC_LGUI,    ALT_T(KC_APP),
         KC_HOME,
@@ -100,11 +100,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  * ,--------------------------------------------------.           ,--------------------------------------------------.
  * |Version |  F1  |  F2  |  F3  |  F4  |  F5  |  F6  |           |  F7  |  F8  |  F9  |  F10 |  F11 |  F12 |        |
  * |--------+------+------+------+------+-------------|           |------+------+------+------+------+------+--------|
- * |        |   !  |   @  |   {  |   }  |      |      |           |      |      |   "  |   '  |   =  |   *  |        |
+ * | VolUp  |   !  |   @  |   {  |   }  |      |      |           |      |      |   "  |   '  |   =  |   *  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   #  |   $  |   (  |   )  |      |------|           |------|      |   &  |   _  |   -  |   +  |        |
+ * | Play   |   #  |   $  |   (  |   )  |      |------|           |------|      |   &  |   _  |   -  |   +  |        |
  * |--------+------+------+------+------+------|      |           |      |------+------+------+------+------+--------|
- * |        |   %  |   ^  |   [  |   ]  |      |      |           |      |      |   |  |   `  |   ~  |   \  |        |
+ * | VolDn  |   %  |   ^  |   [  |   ]  |      |      |           |      |      |   |  |   `  |   ~  |   \  |        |
  * `--------+------+------+------+------+-------------'           `-------------+------+------+------+------+--------'
  *   |      |      |      |      |      |                                       |      |      |      |      |      |
  *   `----------------------------------'                                       `----------------------------------'
@@ -119,10 +119,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 // SYMBOLS
 [SYMBOLS] = LAYOUT_ergodox(
        // left hand
-       M(0),    KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
-       KC_TRNS, SYM_T(KC_EXLM), SYM_T(KC_AT),   SYM_T(KC_LCBR), SYM_T(KC_RCBR), KC_TRNS, KC_TRNS,
-       KC_TRNS, KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_TRNS,
-       KC_TRNS, KC_PERC,        KC_CIRC,        KC_LBRC,        KC_RBRC,        KC_TRNS, KC_TRNS,
+       KC_RCRD, KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,
+       KC_VOLU, SYM_T(KC_EXLM), SYM_T(KC_AT),   SYM_T(KC_LCBR), SYM_T(KC_RCBR), KC_TRNS, KC_TRNS,
+       KC_MPLY, KC_HASH,        KC_DLR,         KC_LPRN,        KC_RPRN,        KC_TRNS,
+       KC_VOLD, KC_PERC,        KC_CIRC,        KC_LBRC,        KC_RBRC,        KC_TRNS, KC_TRNS,
        KC_TRNS, KC_TRNS,        KC_TRNS,        KC_TRNS,        KC_TRNS,
                                                                                  KC_TRNS,KC_TRNS,
                                                                                          KC_TRNS,
